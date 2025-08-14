@@ -1,11 +1,10 @@
-FROM eclipse-temurin:17-jdk-alpine as build
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY pom.xml mvnw .
-COPY .mvn .mvn
+COPY pom.xml .
 COPY src src
-RUN ./mvnw -DskipTests package -q
+RUN mvn -DskipTests clean package spring-boot:repackage
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+CMD ["java", "-jar", "app.jar"]
