@@ -35,20 +35,20 @@ Antes de rodar o projeto, instale:
 
 🚀 Como rodar com Docker Compose
 
-    Clone o repositório:
+Clone o repositório:
 
-git clone https://github.com/seuusuario/btg-challenge.git
-cd btg-challenge
+    git clone https://github.com/seuusuario/btg-challenge.git
+    cd btg-challenge
 
-    Suba a aplicação:
+Suba a aplicação:
 
-docker compose up --build
+    docker compose up --build
 
-    Acesse:
+Acesse:
 
     Aplicação: http://localhost:8080
 
-    RabbitMQ Management: http://localhost:15672
+    RabbitMQ Management: http://localhost:15673
 
         Usuário: guest
 
@@ -57,18 +57,18 @@ docker compose up --build
 🛠 Testando o fluxo
 Publicar mensagem no RabbitMQ
 
-    Acesse o painel RabbitMQ: http://localhost:15672
+    Acesse o painel RabbitMQ: http://localhost:15673
 
-    Envie para a fila orders o seguinte JSON:
+Envie para a fila orders o seguinte JSON:
 
-{
-  "codigoPedido": 1001,
-  "codigoCliente": 1,
-  "itens": [
-    { "produto": "lapis", "quantidade": 100, "preco": 1.10 },
-    { "produto": "caderno", "quantidade": 10, "preco": 5.00 }
-  ]
-}
+    {
+      "codigoPedido": 1001,
+      "codigoCliente": 1,
+      "itens": [
+        { "produto": "lapis", "quantidade": 100, "preco": 1.10 },
+        { "produto": "caderno", "quantidade": 10, "preco": 5.00 }
+      ]
+    }
 
 📡 Endpoints disponíveis
 
@@ -80,7 +80,7 @@ Publicar mensagem no RabbitMQ
 
 Exemplo:
 
-curl http://localhost:8080/orders/1001/total
+    curl http://localhost:8080/orders/1001/total
 
 🧪 Rodando testes
 
